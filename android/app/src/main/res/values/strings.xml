@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Concept Imprint</string>
+    <string name="title_activity_main">Concept Imprint</string>
+    <string name="package_name">com.company.conceptimprint</string>
+    <string name="custom_url_scheme">com.company.conceptimprint</string>
+</resources>
