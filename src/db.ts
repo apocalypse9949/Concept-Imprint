@@ -49,32 +49,7 @@ export const syncWithCloud = async () => {
     // Use a small overlap (5 seconds) to handle clock skew/simultaneous changes
     const fetchTime = Math.max(0, lastSyncTime - 5000);
     
-    // 1. Pull changes from Supabase (including those marked as deleted)
-    const { data: remoteData, error: pullError } = await supabase
-      .from('ideas')
-      .select('*')
-      .gt('updated_at', fetchTime);
-
-    if (pullError) throw pullError;
-
-    if (remoteData && remoteData.length > 0) {
-      console.log(`Cloud Sync: Pulling ${remoteData.length} changes from Supabase...`);
-      await db.transaction('rw', db.ideas, async () => {
-        for (const remoteIdea of remoteData) {
-          const localIdea = await db.ideas.get(remoteIdea.id);
-          // Only update if remote is newer
-          if (!localIdea || remoteIdea.updated_at > localIdea.updated_at) {
-            await db.ideas.put(remoteIdea as Idea);
-            if (remoteIdea.deleted) {
-              console.log(`Cloud Sync: Marked idea "${remoteIdea.title}" as deleted locally.`);
-            }
-          }
-        }
-      });
-    }
-
-    // 2. Push local changes (including soft deletions)
-    // Using aboveOrEqual to catch changes that happened in the same millisecond as the last sync
+    // 1. PUSH local changes (Push first so the Cloud is aware of our deletions)
     const localUpdatedIdeas = await db.ideas
       .where('updated_at')
       .aboveOrEqual(lastSyncTime)
@@ -89,6 +64,37 @@ export const syncWithCloud = async () => {
       if (pushError) throw pushError;
     } else {
       console.log('Cloud Sync: No local changes found to push.');
+    }
+
+    // 2. PULL changes from Supabase (including those marked as deleted)
+    const fetchTime = Math.max(0, lastSyncTime - 5000);
+    const { data: remoteData, error: pullError } = await supabase
+      .from('ideas')
+      .select('*')
+      .gt('updated_at', fetchTime);
+
+    if (pullError) throw pullError;
+
+    if (remoteData && remoteData.length > 0) {
+      console.log(`Cloud Sync: Pulling ${remoteData.length} records from Supabase...`);
+      await db.transaction('rw', db.ideas, async () => {
+        for (const remoteIdea of remoteData) {
+          const localIdea = await db.ideas.get(remoteIdea.id);
+          
+          // CRITICAL FIX: If local idea is already deleted, never let a pull "revive" it
+          if (localIdea?.deleted && !remoteIdea.deleted) {
+            continue; 
+          }
+
+          // Only update local if remote is strictly newer
+          if (!localIdea || remoteIdea.updated_at > localIdea.updated_at) {
+            await db.ideas.put(remoteIdea as Idea);
+            if (remoteIdea.deleted) {
+              console.log(`Cloud Sync: Marked idea "${remoteIdea.title}" as deleted locally.`);
+            }
+          }
+        }
+      });
     }
 
     // 3. Update last sync time
