@@ -67,7 +67,6 @@ export const syncWithCloud = async () => {
     }
 
     // 2. PULL changes from Supabase (including those marked as deleted)
-    const fetchTime = Math.max(0, lastSyncTime - 5000);
     const { data: remoteData, error: pullError } = await supabase
       .from('ideas')
       .select('*')
