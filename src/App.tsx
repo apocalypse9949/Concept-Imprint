@@ -102,9 +102,12 @@ function App() {
   // Capacitor OTA Updater Listener
   useEffect(() => {
     if (Capacitor.isNativePlatform()) {
+      // Notify Capgo that the app has successfully loaded the patch!
+      // This prevents the updater from rolling back to the previous version.
+      CapacitorUpdater.notifyAppReady();
+
       CapacitorUpdater.addListener('updateAvailable', () => {
         console.log('Patch Update available! Restart app to apply.');
-        // Optionally show a toast here - for now we'll just log and let autoUpdate: true handle it.
       });
     }
   }, []);
