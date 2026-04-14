@@ -74,13 +74,14 @@ export const syncWithCloud = async () => {
     }
 
     // 2. Push local changes (including soft deletions)
+    // Using aboveOrEqual to catch changes that happened in the same millisecond as the last sync
     const localUpdatedIdeas = await db.ideas
       .where('updated_at')
-      .above(lastSyncTime)
+      .aboveOrEqual(lastSyncTime)
       .toArray();
 
     if (localUpdatedIdeas.length > 0) {
-      console.log(`Cloud Sync: Pushing ${localUpdatedIdeas.length} local changes to Supabase...`);
+      console.log(`Cloud Sync: Pushing ${localUpdatedIdeas.length} local changes to Supabase...`, localUpdatedIdeas);
       const { error: pushError } = await supabase
         .from('ideas')
         .upsert(localUpdatedIdeas);
