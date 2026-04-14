@@ -20,8 +20,8 @@ export class IdeaTrackerDB extends Dexie {
 
   constructor() {
     super('IdeaTrackerDB');
-    this.version(1).stores({
-      ideas: 'id, title, status, priority, created_at, *tags'
+    this.version(2).stores({
+      ideas: 'id, title, status, priority, created_at, updated_at, *tags'
       // *tags means we can index/query by any tag in the array
     });
   }
@@ -46,47 +46,57 @@ export const syncWithCloud = async () => {
     const lastSyncStr = localStorage.getItem(LAST_SYNC_KEY);
     const lastSyncTime = lastSyncStr ? parseInt(lastSyncStr, 10) : 0;
     
-    // 1. Pull changes from Supabase made since last sync
+    // Use a small overlap (5 seconds) to handle clock skew/simultaneous changes
+    const fetchTime = Math.max(0, lastSyncTime - 5000);
+    
+    // 1. Pull changes from Supabase (including those marked as deleted)
     const { data: remoteData, error: pullError } = await supabase
       .from('ideas')
       .select('*')
-      .gt('updated_at', lastSyncTime);
+      .gt('updated_at', fetchTime);
 
     if (pullError) throw pullError;
 
     if (remoteData && remoteData.length > 0) {
+      console.log(`Cloud Sync: Pulling ${remoteData.length} changes from Supabase...`);
       await db.transaction('rw', db.ideas, async () => {
         for (const remoteIdea of remoteData) {
-          // Check local
           const localIdea = await db.ideas.get(remoteIdea.id);
-          // If local idea doesn't exist, or remote is newer, overwrite local
+          // Only update if remote is newer
           if (!localIdea || remoteIdea.updated_at > localIdea.updated_at) {
             await db.ideas.put(remoteIdea as Idea);
+            if (remoteIdea.deleted) {
+              console.log(`Cloud Sync: Marked idea "${remoteIdea.title}" as deleted locally.`);
+            }
           }
         }
       });
     }
 
-    // 2. Push local changes made since last sync (including deletions)
+    // 2. Push local changes (including soft deletions)
     const localUpdatedIdeas = await db.ideas
-      .filter(idea => idea.updated_at > lastSyncTime)
+      .where('updated_at')
+      .above(lastSyncTime)
       .toArray();
 
     if (localUpdatedIdeas.length > 0) {
+      console.log(`Cloud Sync: Pushing ${localUpdatedIdeas.length} local changes to Supabase...`);
       const { error: pushError } = await supabase
         .from('ideas')
         .upsert(localUpdatedIdeas);
         
       if (pushError) throw pushError;
+    } else {
+      console.log('Cloud Sync: No local changes found to push.');
     }
 
     // 3. Update last sync time
     localStorage.setItem(LAST_SYNC_KEY, Date.now().toString());
-    console.log('Supabase sync complete!');
+    console.log('Cloud Sync: Operation successful.');
     return true;
 
   } catch (error) {
-    console.error('Error syncing with Supabase:', error);
+    console.error('Cloud Sync Error:', error);
     return false;
   }
 };
