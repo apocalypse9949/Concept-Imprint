@@ -12,6 +12,7 @@ export interface Idea {
   priority: IdeaPriority;
   created_at: number;
   updated_at: number;
+  deleted?: boolean;
 }
 
 export class IdeaTrackerDB extends Dexie {
@@ -38,10 +39,7 @@ export const syncWithCloud = async () => {
   }
 
   // Check if we have internet connection
-  if (!navigator.onLine) {
-    console.log('Currently offline. Sync skipped.');
-    return false;
-  }
+  // Bypassed navigator.onLine check as it fluctuates falsely on Android WebViews
 
   try {
     const LAST_SYNC_KEY = 'idea_tracker_last_sync';
@@ -69,7 +67,7 @@ export const syncWithCloud = async () => {
       });
     }
 
-    // 2. Push local changes made since last sync
+    // 2. Push local changes made since last sync (including deletions)
     const localUpdatedIdeas = await db.ideas
       .filter(idea => idea.updated_at > lastSyncTime)
       .toArray();

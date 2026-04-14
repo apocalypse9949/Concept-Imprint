@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "patch": "vite build && npx @capgo/cli@latest bundle upload"
   },
   "dependencies": {
     "@capacitor-community/speech-recognition": "^7.0.1",
@@ -16,6 +17,7 @@
     "@capacitor/core": "^8.3.0",
     "@capacitor/ios": "^8.3.0",
     "@capacitor/splash-screen": "^8.0.1",
+    "@capgo/capacitor-updater": "^8.45.3",
     "@supabase/supabase-js": "^2.103.0",
     "clsx": "^2.1.1",
     "dexie": "^4.4.2",
@@ -28,6 +30,7 @@
     "vite-plugin-pwa": "^1.2.0"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@eslint/js": "^9.39.4",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",

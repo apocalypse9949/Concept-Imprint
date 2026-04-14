@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { Capacitor } from '@capacitor/core';
 import { SpeechRecognition as NativeSpeech } from '@capacitor-community/speech-recognition';
+import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { db, syncWithCloud } from './db';
 import type { Idea, IdeaStatus, IdeaPriority } from './db';
 import { 
@@ -89,10 +90,8 @@ function App() {
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('online', handleOnline);
     
-    // Initial sync on load
-    if (navigator.onLine) {
-       handleOnline();
-    }
+    // Initial sync on load - removed brittle onLine check for Native reliability
+    handleOnline();
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
@@ -100,12 +99,22 @@ function App() {
     };
   }, []);
 
+  // Capacitor OTA Updater Listener
+  useEffect(() => {
+    if (Capacitor.isNativePlatform()) {
+      CapacitorUpdater.addListener('updateAvailable', () => {
+        console.log('Patch Update available! Restart app to apply.');
+        // Optionally show a toast here - for now we'll just log and let autoUpdate: true handle it.
+      });
+    }
+  }, []);
+
   // Fetch Ideas
   const ideas = useLiveQuery(
     () => {
       let collection = db.ideas.orderBy('created_at').reverse();
+      collection = collection.filter(idea => !idea.deleted); // Hide soft-deleted items
       if (selectedTag) {
-        // Simple tag exact match filter
         return collection.filter(idea => idea.tags.includes(selectedTag)).toArray();
       }
       return collection.toArray();
@@ -242,8 +251,12 @@ function App() {
   };
 
   const deleteIdea = async (id: string) => {
-    await db.ideas.delete(id);
+    await db.ideas.update(id, { deleted: true, updated_at: Date.now() });
     setSelectedIdea(null);
+    
+    // Immediate sync to propagate deletion to cloud
+    setIsSyncing(true);
+    syncWithCloud().then(() => setIsSyncing(false));
   };
 
   return (
