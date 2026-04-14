@@ -15,8 +15,8 @@
   
   --border-color: #e5e7eb;
   
-  --accent-primary: #3b82f6;
-  --accent-primary-hover: #2563eb;
+  --accent-primary: #39ff14;
+  --accent-primary-hover: #32e612;
   
   --danger: #ef4444;
   --success: #10b981;
@@ -40,8 +40,8 @@
   
   --border-color: #2e323d;
   
-  --accent-primary: #3b82f6;
-  --accent-primary-hover: #60a5fa;
+  --accent-primary: #39ff14;
+  --accent-primary-hover: #5dfc42;
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
