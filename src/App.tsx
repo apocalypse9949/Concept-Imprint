@@ -16,7 +16,7 @@ import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { db, syncWithCloud } from './db';
 import type { Idea, IdeaStatus, IdeaPriority } from './db';
 import { 
-  Lightbulb, Moon, Sun, Search, Mic, Plus, 
+  Lightbulb, Search, Mic, Plus, 
   X, CheckSquare, Clock, Tag as TagIcon, Cloud
 } from 'lucide-react';
 import './App.css';
@@ -300,12 +300,10 @@ function App() {
           Concept Imprint
         </div>
         
-        <div className="theme-toggle-container">
-          <div className="sync-status">
-            <div className={`status-dot ${isSyncing ? 'syncing' : ''}`} />
-            {isSyncing ? 'Syncing...' : 'Synced'}
-            <Cloud size={14} style={{ marginLeft: '4px' }} />
-          </div>
+        <div className="sync-status">
+          <div className={`status-dot ${isSyncing ? 'syncing' : ''}`} />
+          {isSyncing ? 'Syncing...' : 'Synced'}
+          <Cloud size={14} style={{ marginLeft: '4px' }} />
         </div>
       </header>
 
