@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concept Imprint | Idea Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e0e0e;
+            background-image: 
+                linear-gradient(rgba(72, 72, 71, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(72, 72, 71, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .headline-font { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#a900a9",
+                      "secondary": "#ff51fa",
+                      "surface-container": "#1a1919",
+                      "on-error-container": "#ffa8a3",
+                      "tertiary-fixed-dim": "#49e043",
+                      "tertiary-fixed": "#59ee50",
+                      "surface-container-high": "#201f1f",
+                      "secondary-fixed": "#ffbdf3",
+                      "inverse-primary": "#006a6a",
+                      "primary-dim": "#00e6e6",
+                      "inverse-on-surface": "#565555",
+                      "error": "#ff716c",
+                      "surface-variant": "#262626",
+                      "outline": "#767575",
+                      "outline-variant": "#484847",
+                      "background": "#0e0e0e",
+                      "surface-container-lowest": "#000000",
+                      "tertiary": "#69fd5d",
+                      "primary": "#c1fffe",
+                      "on-tertiary-fixed-variant": "#005f07",
+                      "on-surface": "#ffffff",
+                      "secondary-dim": "#ff51fa",
+                      "primary-container": "#00ffff",
+                      "error-dim": "#d7383b",
+                      "surface-tint": "#c1fffe",
+                      "on-secondary": "#400040",
+                      "on-error": "#490006",
+                      "on-secondary-container": "#fff5f9",
+                      "surface-container-highest": "#262626",
+                      "surface-container-low": "#131313",
+                      "on-surface-variant": "#adaaaa",
+                      "on-primary-fixed-variant": "#006262",
+                      "secondary-fixed-dim": "#ffa6f3",
+                      "tertiary-dim": "#49e043",
+                      "on-tertiary": "#005e07",
+                      "surface": "#0e0e0e",
+                      "primary-fixed": "#00f5f5",
+                      "tertiary-container": "#59ee50",
+                      "on-tertiary-container": "#005406",
+                      "on-secondary-fixed": "#620061",
+                      "inverse-surface": "#fcf9f8",
+                      "on-primary": "#006767",
+                      "on-background": "#ffffff",
+                      "error-container": "#9f0519",
+                      "surface-dim": "#0e0e0e",
+                      "on-tertiary-fixed": "#003e03",
+                      "primary-fixed-dim": "#00e6e6",
+                      "on-primary-fixed": "#004343",
+                      "on-secondary-fixed-variant": "#920091",
+                      "on-primary-container": "#005d5d",
+                      "surface-bright": "#2c2c2c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e] flex items-center justify-between px-6 h-16 w-full max-w-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#c1fffe]" data-icon="terminal">terminal</span>
+<span class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#c1fffe] font-bold tracking-[0.2em]">NEON_PROTOCOL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest text-on-surface-variant">Sync: Active</span>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<div class="flex flex-col">
+<h1 class="text-4xl font-headline font-bold text-primary tracking-tighter leading-none mb-2">IDEA_GRID</h1>
+<p class="text-on-surface-variant text-sm font-body max-w-[280px] leading-relaxed">
+                    Captured mental imprints processed through the Neon Protocol system architecture.
+                </p>
+</div>
+</section>
+<!-- Search / Filter Tactical Input -->
+<div class="mb-12 group">
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-0 font-headline text-sm tracking-widest uppercase focus:ring-0 focus:border-secondary transition-all placeholder:text-outline-variant text-primary" placeholder="FILTER_STREAM..." type="text"/>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-300 group-focus-within:w-full shadow-[0_0_10px_rgba(255,81,250,0.5)]"></div>
+</div>
+</div>
+<!-- Bento Idea Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Idea Card 1 -->
+<div class="bg-surface-container-low p-6 flex flex-col justify-between min-h-[180px] hover:bg-surface-container-high transition-colors duration-200">
+<div>
+<span class="font-label text-[10px] text-primary uppercase tracking-[0.2em] mb-4 block">Imprint #4402</span>
+<p class="font-body text-on-surface leading-snug">Neural interface protocols for cross-chain identity verification without latency spikes.</p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Web3</span>
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Neural</span>
+</div>
+</div>
+<!-- Idea Card 2 (Large) -->
+<div class="bg-surface-container-low p-6 flex flex-col justify-between md:col-span-1 min-h-[180px] border-l-2 border-secondary/30">
+<div>
+<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] mb-4 block">Priority Imprint</span>
+<p class="font-body text-on-surface leading-snug">Brutalist UI pattern: 0px radius, no borders, luminance stacking for depth. Cold precision.</p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Design</span>
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Brutalis</span>
+</div>
+</div>
+<!-- Image/Data Viz Component -->
+<div class="md:col-span-2 relative h-48 bg-surface-container-high overflow-hidden group">
+<img alt="Abstract digital network visualization" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="abstract flowing mesh of cyan and magenta data lines against a deep black background with digital noise texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgvRfbVW-yT9cUc6ZRhKKRf-G5Cko4DdvVWEFu7IIvfjz-5NmCX-CSUggIKL32v-MPPeHiRho5rI12ST33KSuuI9wa99JtEyY36anYLQzvPUF9-CGSFQdjSvpdl0WDLXilXFKXMXWoIqRj7AXkaX_7PwcHK9fE0Kof-cuhi-WentLpneFGJ9TVa0r8j1-xaAjQ_zkwj-Qjnnep6jg9ClJ64cPU8Q3UrJIf1p9rK7tDdZ28GswIMlOBepUtFMnb09SraWw-_Fvumg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline font-bold text-primary tracking-widest text-lg uppercase">Visual Context</h3>
+<p class="font-body text-[10px] text-on-surface-variant uppercase tracking-widest">Metadata Fragment: Node_Sync_09</p>
+</div>
+</div>
+<!-- Idea Card 3 -->
+<div class="bg-surface-container-low p-6 flex flex-col justify-between min-h-[180px]">
+<div>
+<span class="font-label text-[10px] text-primary uppercase tracking-[0.2em] mb-4 block">Imprint #4391</span>
+<p class="font-body text-on-surface leading-snug">The concept of "Digital Solitude" in a hyper-connected metaverse environment.</p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Philosophy</span>
+</div>
+</div>
+<!-- Idea Card 4 -->
+<div class="bg-surface-container-low p-6 flex flex-col justify-between min-h-[180px]">
+<div>
+<span class="font-label text-[10px] text-primary uppercase tracking-[0.2em] mb-4 block">Imprint #4388</span>
+<p class="font-body text-on-surface leading-snug">Quantum resilient encryption using bio-metric entropy sources.</p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Security</span>
+<span class="font-label text-[10px] text-tertiary bg-tertiary/10 px-2 py-0.5 uppercase tracking-wider">#Bio</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary flex items-center justify-center shadow-[0_0_20px_rgba(193,255,254,0.3)] hover:scale-110 active:scale-95 transition-all duration-200 z-[60]">
+<span class="material-symbols-outlined" data-icon="add" style="font-size: 32px;">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl border-t border-[#484847]/15">
+<div class="flex justify-around items-center w-full px-8 pb-6 pt-2 h-20">
+<a class="flex flex-col items-center justify-center text-[#484847] pt-2 hover:text-[#69fd5d] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="Grain">grain</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider mt-1">Imprints</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c1fffe] border-t-2 border-[#ff51fa] pt-2" href="#">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider mt-1">Capture</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#484847] pt-2 hover:text-[#69fd5d] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider mt-1">Compose</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#484847] pt-2 hover:text-[#69fd5d] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider mt-1">System</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#fcf9f8",
+                    "on-tertiary-container": "#005406",
+                    "on-primary": "#006767",
+                    "secondary-fixed": "#ffbdf3",
+                    "on-tertiary": "#005e07",
+                    "inverse-on-surface": "#565555",
+                    "primary-container": "#00ffff",
+                    "on-background": "#ffffff",
+                    "secondary-fixed-dim": "#ffa6f3",
+                    "primary": "#c1fffe",
+                    "primary-dim": "#00e6e6",
+                    "error": "#ff716c",
+                    "on-surface": "#ffffff",
+                    "surface-container-lowest": "#000000",
+                    "error-dim": "#d7383b",
+                    "tertiary-container": "#59ee50",
+                    "tertiary": "#69fd5d",
+                    "secondary-container": "#a900a9",
+                    "outline-variant": "#484847",
+                    "on-primary-container": "#005d5d",
+                    "on-secondary-fixed-variant": "#920091",
+                    "surface-tint": "#c1fffe",
+                    "on-error-container": "#ffa8a3",
+                    "surface": "#0e0e0e",
+                    "surface-container-highest": "#262626",
+                    "surface-container-high": "#201f1f",
+                    "on-primary-fixed-variant": "#006262",
+                    "on-tertiary-fixed": "#003e03",
+                    "secondary": "#ff51fa",
+                    "tertiary-fixed": "#59ee50",
+                    "tertiary-fixed-dim": "#49e043",
+                    "inverse-primary": "#006a6a",
+                    "on-primary-fixed": "#004343",
+                    "surface-dim": "#0e0e0e",
+                    "primary-fixed-dim": "#00e6e6",
+                    "surface-container": "#1a1919",
+                    "surface-bright": "#2c2c2c",
+                    "surface-variant": "#262626",
+                    "outline": "#767575",
+                    "on-surface-variant": "#adaaaa",
+                    "surface-container-low": "#131313",
+                    "on-secondary-fixed": "#620061",
+                    "on-secondary-container": "#fff5f9",
+                    "on-tertiary-fixed-variant": "#005f07",
+                    "error-container": "#9f0519",
+                    "tertiary-dim": "#49e043",
+                    "secondary-dim": "#ff51fa",
+                    "primary-fixed": "#00f5f5",
+                    "on-secondary": "#400040",
+                    "background": "#0e0e0e",
+                    "on-error": "#490006"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, transparent 0%, rgba(193, 255, 254, 0.05) 50%, transparent 100%);
+            height: 4px;
+            width: 100%;
+            position: fixed;
+            top: -10px;
+            left: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan {
+            from { top: -10% }
+            to { top: 110% }
+        }
+        .tactical-grid {
+            background-size: 24px 24px;
+            background-image: linear-gradient(to right, rgba(72, 72, 71, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(72, 72, 71, 0.05) 1px, transparent 1px);
+        }
+        .glow-border {
+            box-shadow: 0 0 10px rgba(193, 255, 254, 0.1);
+        }
+        .glow-border:hover {
+            box-shadow: 0 0 20px rgba(193, 255, 254, 0.3);
+        }
+        .cyber-switch:checked + .cyber-slider {
+            background-color: #ff51fa;
+            box-shadow: 0 0 10px #ff51fa;
+        }
+        .cyber-switch:checked + .cyber-slider:before {
+            transform: translateX(18px);
+            background-color: #ffffff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen overflow-x-hidden">
+<div class="scanline"></div>
+<div class="tactical-grid fixed inset-0 pointer-events-none"></div>
+<!-- Top Navigation Anchor -->
+<header class="bg-[#0e0e0e] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-[60] border-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#c1fffe]" data-icon="terminal">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold text-[#c1fffe] tracking-widest uppercase">NEON_PROTOCOL</h1>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex gap-6 font-['Space_Grotesk'] uppercase tracking-[0.05em] text-sm">
+<a class="text-[#c1fffe] hover:text-[#ff51fa] transition-colors duration-200" href="#">CORE</a>
+<a class="text-[#484847] hover:text-[#ff51fa] transition-colors duration-200" href="#">NODES</a>
+<a class="text-[#484847] hover:text-[#ff51fa] transition-colors duration-200" href="#">UPLINK</a>
+<a class="text-[#484847] hover:text-[#ff51fa] transition-colors duration-200" href="#">SYSTEM</a>
+</nav>
+<div class="w-8 h-8 bg-surface-container-highest border border-outline-variant flex items-center justify-center scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto relative z-10">
+<!-- Dashboard Header -->
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<p class="font-label text-primary text-sm tracking-[0.2em] mb-2 uppercase">TERMINAL // CONCEPT_IMPRINT</p>
+<h2 class="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface">IDEA_GRID</h2>
+</div>
+<!-- Cyber Filters -->
+<div class="bg-surface-container-low p-6 flex flex-wrap gap-8 border-l-2 border-primary">
+<div class="flex items-center gap-4">
+<span class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Live Sync</span>
+<label class="relative inline-block w-10 h-5">
+<input checked="" class="cyber-switch opacity-0 w-0 h-0" type="checkbox"/>
+<span class="cyber-slider absolute cursor-pointer inset-0 bg-surface-container-highest transition-all duration-300 before:absolute before:h-3 before:w-3 before:left-1 before:bottom-1 before:bg-outline-variant before:transition-all before:duration-300"></span>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Secure Node</span>
+<label class="relative inline-block w-10 h-5">
+<input class="cyber-switch opacity-0 w-0 h-0" type="checkbox"/>
+<span class="cyber-slider absolute cursor-pointer inset-0 bg-surface-container-highest transition-all duration-300 before:absolute before:h-3 before:w-3 before:left-1 before:bottom-1 before:bg-outline-variant before:transition-all before:duration-300"></span>
+</label>
+</div>
+<div class="h-5 w-px bg-outline-variant opacity-20"></div>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+<span class="font-label text-xs uppercase tracking-widest">Filter System</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Idea Display -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-outline-variant/10">
+<!-- Feature Card 01 - Large -->
+<div class="md:col-span-8 bg-surface-container border border-outline-variant/20 p-8 glow-border transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="neurology">neurology</span>
+</div>
+<div class="flex justify-between items-start mb-12">
+<span class="font-label text-[10px] text-tertiary border border-tertiary/30 px-2 py-0.5 tracking-tighter">ID: CC-4902</span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Updated: 02.44.12</span>
+</div>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-4 group-hover:text-primary transition-colors">Neural Mesh Topology</h3>
+<p class="font-body text-on-surface-variant text-lg mb-8 max-w-2xl leading-relaxed">
+                    Developing a decentralized architectural framework for synaptic data distribution across edge-nodes. Imprint focused on low-latency cognitive offloading protocols.
+                </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label text-xs text-tertiary bg-tertiary/10 px-3 py-1 uppercase tracking-widest">#PROTOCOL</span>
+<span class="font-label text-xs text-tertiary bg-tertiary/10 px-3 py-1 uppercase tracking-widest">#NEURAL</span>
+<span class="font-label text-xs text-tertiary bg-tertiary/10 px-3 py-1 uppercase tracking-widest">#EDGE_COMPUTE</span>
+</div>
+</div>
+<!-- Card 02 - Medium -->
+<div class="md:col-span-4 bg-surface-container-high border border-outline-variant/20 p-8 glow-border transition-all group">
+<div class="mb-8">
+<span class="font-label text-[10px] text-secondary border border-secondary/30 px-2 py-0.5 tracking-tighter">ID: CC-8812</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4 group-hover:text-secondary transition-colors">Fragmented Identity</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                    Biometric encryption based on behavioral heatmaps rather than static markers.
+                </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label text-xs text-secondary bg-secondary/10 px-3 py-1 uppercase tracking-widest">#BIO_SEC</span>
+<span class="font-label text-xs text-secondary bg-secondary/10 px-3 py-1 uppercase tracking-widest">#CRYPTO</span>
+</div>
+</div>
+<!-- Card 03 - Small Image Focus -->
+<div class="md:col-span-4 bg-surface-container-low border border-outline-variant/20 relative group overflow-hidden h-80">
+<img alt="Neon digital abstraction" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Abstract digital data streams in neon cyan and magenta flowing through dark obsidian space with grid patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZeGsJ4XnkQKhfa-xCy8CHK2CTtr1tsu-bDw3MX2Gc8iuubbZWlU3p1yJrNDfax376ay3qQkLHJy-kCEB-A8gDOkhY_cs__T1OtU20LNlynK8dVfEJWO4T5PWdr6htk8vJvIdwj46hLgKbhoC6Y9d-VOgrzJEB1JlhKjvjCochUxj_QqQQEnytU7jLbqUzTG6CEEVPARE0aVmVRAWF8wXbiDpodJ24gOktjOvG18mJr1_hG-Ugyu70_HhFL555UoiCBZ72ues7tg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent p-6 flex flex-col justify-end">
+<h3 class="font-headline text-xl font-bold text-primary uppercase tracking-wider">Interface_Alpha</h3>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-2">Visual Scripting Module</p>
+</div>
+</div>
+<!-- Card 04 - Text Focus -->
+<div class="md:col-span-4 bg-surface-container border border-outline-variant/20 p-8 glow-border transition-all group">
+<div class="mb-8">
+<span class="font-label text-[10px] text-primary border border-primary/30 px-2 py-0.5 tracking-tighter">ID: CC-1019</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4 group-hover:text-primary transition-colors">Quantum State Sync</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                    Immediate ledger reconciliation using entangled particle pairs for zero-time verification across solar nodes.
+                </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label text-xs text-primary bg-primary/10 px-3 py-1 uppercase tracking-widest">#QUANTUM</span>
+<span class="font-label text-xs text-primary bg-primary/10 px-3 py-1 uppercase tracking-widest">#LEDGER</span>
+</div>
+</div>
+<!-- Card 05 - Wide -->
+<div class="md:col-span-4 bg-surface-container border border-outline-variant/20 p-8 glow-border transition-all group border-r-2 border-r-secondary">
+<div class="mb-8 flex justify-between">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Status: Researching</span>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4 group-hover:text-secondary transition-colors">Cyber-Kinetic Relay</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                    Converting excess mechanical energy from haptic feedback systems back into power for auxiliary processing cores.
+                </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label text-xs text-secondary bg-secondary/10 px-3 py-1 uppercase tracking-widest">#KINETIC</span>
+<span class="font-label text-xs text-secondary bg-secondary/10 px-3 py-1 uppercase tracking-widest">#HAPTIC</span>
+</div>
+</div>
+<!-- Card 06 - Full Width Data Stream -->
+<div class="md:col-span-12 bg-surface-container-highest/30 border border-outline-variant/20 p-6 flex flex-col md:flex-row items-center gap-8 group">
+<div class="w-full md:w-32 h-16 bg-surface-container-high flex items-center justify-center border border-primary/20 text-primary">
+<span class="font-headline font-bold text-2xl tracking-tighter">88%</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label text-xs text-on-surface-variant uppercase tracking-widest mb-1">Background Processing: Global_Imprint_Sync</h4>
+<div class="w-full bg-surface-container-low h-1 relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary w-[88%] shadow-[0_0_10px_rgba(0,255,255,0.5)]"></div>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label text-xs px-8 py-3 uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95">Accelerate_Node</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0e0e0e]/60 backdrop-blur-xl border-none">
+<a class="flex flex-col items-center justify-center text-[#c1fffe] shadow-[0_0_15px_rgba(0,255,255,0.3)] bg-[#201f1f] p-3 transition-all duration-300 scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-tighter mt-1">CORE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa]" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-tighter mt-1">IDEAS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa]" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-tighter mt-1">UPLINK</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-tighter mt-1">SYSTEM</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual -->
+<button class="fixed right-8 bottom-24 bg-primary text-on-primary w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.4)] hover:scale-110 active:scale-90 transition-all z-40 border border-on-primary/20">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</body></html>

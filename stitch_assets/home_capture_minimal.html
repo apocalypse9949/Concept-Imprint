@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concept Imprint - Home Capture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#a900a9",
+                        "secondary": "#ff51fa",
+                        "surface-container": "#1a1919",
+                        "on-error-container": "#ffa8a3",
+                        "tertiary-fixed-dim": "#49e043",
+                        "tertiary-fixed": "#59ee50",
+                        "surface-container-high": "#201f1f",
+                        "secondary-fixed": "#ffbdf3",
+                        "inverse-primary": "#006a6a",
+                        "primary-dim": "#00e6e6",
+                        "inverse-on-surface": "#565555",
+                        "error": "#ff716c",
+                        "surface-variant": "#262626",
+                        "outline": "#767575",
+                        "outline-variant": "#484847",
+                        "background": "#0e0e0e",
+                        "surface-container-lowest": "#000000",
+                        "tertiary": "#69fd5d",
+                        "primary": "#c1fffe",
+                        "on-tertiary-fixed-variant": "#005f07",
+                        "on-surface": "#ffffff",
+                        "secondary-dim": "#ff51fa",
+                        "primary-container": "#00ffff",
+                        "error-dim": "#d7383b",
+                        "surface-tint": "#c1fffe",
+                        "on-secondary": "#400040",
+                        "on-error": "#490006",
+                        "on-secondary-container": "#fff5f9",
+                        "surface-container-highest": "#262626",
+                        "surface-container-low": "#131313",
+                        "on-surface-variant": "#adaaaa",
+                        "on-primary-fixed-variant": "#006262",
+                        "secondary-fixed-dim": "#ffa6f3",
+                        "tertiary-dim": "#49e043",
+                        "on-tertiary": "#005e07",
+                        "surface": "#0e0e0e",
+                        "primary-fixed": "#00f5f5",
+                        "tertiary-container": "#59ee50",
+                        "on-tertiary-container": "#005406",
+                        "on-secondary-fixed": "#620061",
+                        "inverse-surface": "#fcf9f8",
+                        "on-primary": "#006767",
+                        "on-background": "#ffffff",
+                        "error-container": "#9f0519",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-fixed": "#003e03",
+                        "primary-fixed-dim": "#00e6e6",
+                        "on-primary-fixed": "#004343",
+                        "on-secondary-fixed-variant": "#920091",
+                        "on-primary-container": "#005d5d",
+                        "surface-bright": "#2c2c2c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            background-image: linear-gradient(rgba(72, 72, 71, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(72, 72, 71, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e] flex items-center justify-between px-6 h-16 max-w-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#c1fffe]" data-icon="terminal">terminal</span>
+<span class="text-[#c1fffe] font-['Space_Grotesk'] font-bold tracking-[0.2em] uppercase text-sm">NEON_PROTOCOL</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="font-label text-[10px] tracking-widest text-outline-variant uppercase">Syncing...</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-32 px-6 flex flex-col max-w-2xl mx-auto w-full">
+<!-- Status Bar Subtle -->
+<div class="mb-8 flex justify-between items-end border-b border-outline-variant/15 pb-2">
+<div>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-outline">Session Status</p>
+<p class="font-headline text-xs text-primary font-medium">UPLINK_STABLE</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-outline">Local Cache</p>
+<p class="font-headline text-xs text-secondary font-medium uppercase tracking-tighter">Offline Queue Active</p>
+</div>
+</div>
+<!-- Capture Section -->
+<div class="flex-grow flex flex-col">
+<label class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 opacity-70" for="capture-input">
+                Transcribe Thought Data
+            </label>
+<div class="relative flex-grow flex flex-col group">
+<!-- Input Area -->
+<textarea class="w-full flex-grow bg-surface-container-low border-none focus:ring-0 text-on-surface font-body text-xl leading-relaxed resize-none p-0 placeholder:text-outline-variant/40" id="capture-input" placeholder="Initialize core concept mapping..."></textarea>
+<!-- Intelligent Syntax Parsing Indicator -->
+<div class="mt-6 space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="memory">memory</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">Intelligent Syntax Parsing</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="bg-tertiary/5 border-l-2 border-tertiary px-3 py-1 flex items-center gap-2">
+<span class="text-tertiary font-label text-[10px] font-bold">#protocol</span>
+<span class="w-1 h-1 bg-tertiary/40 rounded-full"></span>
+</div>
+<div class="bg-secondary/5 border-l-2 border-secondary px-3 py-1 flex items-center gap-2">
+<span class="text-secondary font-label text-[10px] font-bold">#neural</span>
+<span class="w-1 h-1 bg-secondary/40 rounded-full"></span>
+</div>
+<div class="bg-primary/5 border-l-2 border-primary px-3 py-1 flex items-center gap-2 opacity-40">
+<span class="text-primary font-label text-[10px] font-bold">#awaiting_input</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Voice Dictation Anchor -->
+<div class="mt-12 flex flex-col items-center justify-center">
+<button class="relative group">
+<!-- Visual Pulse Rings -->
+<div class="absolute inset-0 bg-primary/20 scale-150 blur-xl rounded-full opacity-0 group-active:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 border border-primary/20 scale-125 rounded-full animate-ping opacity-20"></div>
+<!-- Main Button -->
+<div class="relative w-20 h-20 bg-primary flex items-center justify-center group-hover:bg-primary-fixed transition-colors shadow-[0_0_30px_rgba(193,255,254,0.3)]">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+</button>
+<p class="mt-6 font-label text-[10px] uppercase tracking-[0.4em] text-primary/60">Hold to stream</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl border-t border-[#484847]/15">
+<div class="flex justify-around items-center w-full px-8 pb-6 pt-2">
+<!-- Active Tab: Home/Add -->
+<button class="flex flex-col items-center justify-center text-[#c1fffe] border-t-2 border-[#ff51fa] pt-2 transition-all hover:text-[#69fd5d]">
+<span class="material-symbols-outlined mb-1" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider">Capture</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] pt-2 transition-all hover:text-[#69fd5d]">
+<span class="material-symbols-outlined mb-1" data-icon="mic">mic</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider">Stream</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] pt-2 transition-all hover:text-[#69fd5d]">
+<span class="material-symbols-outlined mb-1" data-icon="Grain">grain</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider">Nodes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] pt-2 transition-all hover:text-[#69fd5d]">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase tracking-wider">System</span>
+</button>
+</div>
+</nav>
+</body></html>

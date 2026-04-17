@@ -25,7 +25,7 @@
 .splash-icon-wrapper {
   background-color: var(--accent-primary);
   padding: 24px;
-  border-radius: 50%;
+  border-radius: 0px; /* Brutalism */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(72, 72, 71, 0.15); /* Ghost Border */
   background: var(--bg-surface);
   position: sticky;
   top: 0;
@@ -71,9 +71,10 @@
   gap: 6px;
   font-size: 0.85rem;
   color: var(--text-muted);
-  background: var(--bg-primary);
+  background: var(--bg-surface); /* container-low */
   padding: 4px 12px;
-  border-radius: 20px;
+  border-radius: 0px;
+  border: 1px solid rgba(72, 72, 71, 0.15); /* Ghost Border */
 }
 
 .status-dot {
@@ -105,17 +106,17 @@
 
 .capture-input-wrapper {
   position: relative;
-  border-radius: 20px;
   background: var(--bg-surface);
-  border: 2px solid var(--border-color);
+  border: none;
+  border-bottom: 1px solid rgba(72, 72, 71, 0.15);
   transition: all 0.3s;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   overflow: hidden;
 }
 
 .capture-input-wrapper:focus-within {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  border-bottom: 2px solid var(--secondary);
+  box-shadow: 0 4px 4px -4px var(--secondary);
 }
 
 .capture-input {
@@ -135,7 +136,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid rgba(72, 72, 71, 0.15);
   background: var(--bg-primary);
 }
 
@@ -182,7 +183,8 @@
 
 .search-input {
   padding-left: 48px;
-  border-radius: 20px;
+  border-radius: 0px;
+  border-bottom: 1px solid rgba(72, 72, 71, 0.15);
 }
 
 .ideas-grid {
@@ -199,11 +201,16 @@
 }
 
 .idea-card {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   cursor: pointer;
+  background: var(--bg-surface); /* fallback */
+  background-color: #1a1919; /* surface-container */
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
 }
 
 .idea-header {
@@ -213,10 +220,12 @@
 }
 
 .idea-title {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
   color: var(--text-primary);
   margin-bottom: 4px;
+  letter-spacing: -0.02em;
 }
 
 .idea-date {
@@ -239,8 +248,8 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  border-top: 1px solid var(--border-color);
-  padding-top: 12px;
+  border-top: 1px solid var(--border-color-faint); /* Ghost Border */
+  padding-top: 16px;
 }
 
 .idea-tags {
@@ -261,8 +270,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(14, 14, 14, 0.85); /* Deep void backdrop */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,12 +278,14 @@
 }
 
 .modal-content {
-  background: var(--bg-surface);
+  background: rgba(38, 38, 38, 0.60); /* surface-variant hex #262626 at 60% */
+  backdrop-filter: blur(20px);
   width: 90%;
   max-width: 700px;
   height: 85vh;
-  border-radius: 24px;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(72, 72, 71, 0.15); /* Ghost Border fallback */
+  border-radius: 0px; /* Brutalism */
+  box-shadow: var(--shadow-lg); /* Soft neon glow */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -283,7 +293,7 @@
 
 .modal-header {
   padding: 24px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color-faint); /* Ghost Border */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -334,10 +344,10 @@
 
 .modal-meta-select {
   background: var(--bg-primary);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(72, 72, 71, 0.15); /* Ghost Border */
   color: var(--text-primary);
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: 0px; /* Brutalism */
   outline: none;
 }
 

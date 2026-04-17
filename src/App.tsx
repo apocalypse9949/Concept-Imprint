@@ -48,10 +48,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const [isDark, setIsDark] = useState(() => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-  
   const [quickIdea, setQuickIdea] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -62,14 +58,10 @@ function App() {
   
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Apply theme
+  // Apply dark theme exclusively for Neon Protocol
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
+    document.documentElement.classList.add('dark');
+  }, []);
 
   // Global Keyboard shortcut (Ctrl + Shift + I) and Online Sync Listener
   useEffect(() => {
@@ -314,10 +306,6 @@ function App() {
             {isSyncing ? 'Syncing...' : 'Synced'}
             <Cloud size={14} style={{ marginLeft: '4px' }} />
           </div>
-          
-          <button className="btn-icon" onClick={() => setIsDark(!isDark)}>
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
         </div>
       </header>
 

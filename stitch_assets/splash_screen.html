@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON_PROTOCOL | IMPRINTING</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#fcf9f8",
+                        "on-tertiary-container": "#005406",
+                        "on-primary": "#006767",
+                        "secondary-fixed": "#ffbdf3",
+                        "on-tertiary": "#005e07",
+                        "inverse-on-surface": "#565555",
+                        "primary-container": "#00ffff",
+                        "on-background": "#ffffff",
+                        "secondary-fixed-dim": "#ffa6f3",
+                        "primary": "#c1fffe",
+                        "primary-dim": "#00e6e6",
+                        "error": "#ff716c",
+                        "on-surface": "#ffffff",
+                        "surface-container-lowest": "#000000",
+                        "error-dim": "#d7383b",
+                        "tertiary-container": "#59ee50",
+                        "tertiary": "#69fd5d",
+                        "secondary-container": "#a900a9",
+                        "outline-variant": "#484847",
+                        "on-primary-container": "#005d5d",
+                        "on-secondary-fixed-variant": "#920091",
+                        "surface-tint": "#c1fffe",
+                        "on-error-container": "#ffa8a3",
+                        "surface": "#0e0e0e",
+                        "surface-container-highest": "#262626",
+                        "surface-container-high": "#201f1f",
+                        "on-primary-fixed-variant": "#006262",
+                        "on-tertiary-fixed": "#003e03",
+                        "secondary": "#ff51fa",
+                        "tertiary-fixed": "#59ee50",
+                        "tertiary-fixed-dim": "#49e043",
+                        "inverse-primary": "#006a6a",
+                        "on-primary-fixed": "#004343",
+                        "surface-dim": "#0e0e0e",
+                        "primary-fixed-dim": "#00e6e6",
+                        "surface-container": "#1a1919",
+                        "surface-bright": "#2c2c2c",
+                        "surface-variant": "#262626",
+                        "outline": "#767575",
+                        "on-surface-variant": "#adaaaa",
+                        "surface-container-low": "#131313",
+                        "on-secondary-fixed": "#620061",
+                        "on-secondary-container": "#fff5f9",
+                        "on-tertiary-fixed-variant": "#005f07",
+                        "error-container": "#9f0519",
+                        "tertiary-dim": "#49e043",
+                        "secondary-dim": "#ff51fa",
+                        "primary-fixed": "#00f5f5",
+                        "on-secondary": "#400040",
+                        "background": "#0e0e0e",
+                        "on-error": "#490006"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        @keyframes pulse-custom {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 10px rgba(193, 255, 254, 0.4)); }
+            50% { opacity: 0.8; transform: scale(0.98); filter: drop-shadow(0 0 25px rgba(193, 255, 254, 0.8)); }
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        @keyframes progress-fill {
+            0% { width: 0%; }
+            10% { width: 15%; }
+            30% { width: 15%; }
+            45% { width: 45%; }
+            60% { width: 50%; }
+            85% { width: 92%; }
+            100% { width: 100%; }
+        }
+        .scanline-effect {
+            background: linear-gradient(to bottom, transparent, rgba(193, 255, 254, 0.1), transparent);
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            animation: scanline 4s linear infinite;
+        }
+        .glitch-text {
+            animation: glitch 1s steps(2) infinite;
+        }
+        .pulse-logo {
+            animation: pulse-custom 3s ease-in-out infinite;
+        }
+        .loading-bar-fill {
+            animation: progress-fill 5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
+        .tactical-grid {
+            background-image: 
+                linear-gradient(to right, rgba(72, 72, 71, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(72, 72, 71, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body overflow-hidden h-screen w-screen selection:bg-primary selection:text-on-primary">
+<!-- Tactical Grid Overlay -->
+<div class="fixed inset-0 tactical-grid pointer-events-none z-0"></div>
+<!-- Scanline Effect -->
+<div class="fixed inset-0 pointer-events-none z-50 overflow-hidden opacity-30">
+<div class="scanline-effect"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 h-full w-full flex flex-col items-center justify-center px-6">
+<!-- Status Header (Top Left Context) -->
+<div class="absolute top-8 left-8 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label text-xs tracking-[0.2em] text-primary uppercase">System.Initialize()</span>
+</div>
+<span class="font-label text-[10px] text-outline tracking-wider uppercase opacity-60">Auth_Token: 0x99NEON</span>
+</div>
+<!-- System Time / Location (Top Right Context) -->
+<div class="absolute top-8 right-8 text-right flex flex-col gap-1">
+<span class="font-label text-xs tracking-[0.2em] text-secondary uppercase">Sector_01_Log</span>
+<span class="font-label text-[10px] text-outline tracking-wider uppercase opacity-60">Status: Encrypting</span>
+</div>
+<!-- Central Logo & Visual Focus -->
+<div class="relative flex flex-col items-center gap-12">
+<!-- Central Glyph Container -->
+<div class="relative group">
+<!-- Outer Ring -->
+<div class="absolute inset-[-40px] border border-primary/10 rounded-full scale-110"></div>
+<div class="absolute inset-[-20px] border border-primary/20 rounded-full scale-105"></div>
+<!-- The Minimalist Logo -->
+<div class="pulse-logo flex flex-col items-center justify-center bg-surface-container-high w-32 h-32 relative z-10">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div class="absolute inset-0 border border-primary/30"></div>
+<!-- Diagonal Artifacts -->
+<div class="absolute -top-1 -left-1 w-2 h-2 bg-primary"></div>
+<div class="absolute -bottom-1 -right-1 w-2 h-2 bg-primary"></div>
+</div>
+<!-- Peripheral Data Points -->
+<div class="absolute -right-24 top-0 font-label text-[10px] text-primary/40 space-y-1">
+<p>LAT: 35.6895</p>
+<p>LON: 139.6917</p>
+<p>ALT: 402m</p>
+</div>
+<div class="absolute -left-24 bottom-0 font-label text-[10px] text-secondary/40 text-right space-y-1">
+<p>SIG_STR: 99%</p>
+<p>PACKET: 2048b</p>
+<p>ERR_RT: 0.00%</p>
+</div>
+</div>
+<!-- Loading Sequence UI -->
+<div class="w-80 md:w-96 space-y-4">
+<div class="flex justify-between items-end px-1">
+<div class="flex flex-col">
+<span class="font-label text-xs tracking-widest text-primary glitch-text">IMPRINTING...</span>
+<span class="font-label text-[9px] text-outline tracking-widest uppercase">Memory_Allocation_Active</span>
+</div>
+<span class="font-label text-xs text-primary opacity-80 tabular-nums">89%</span>
+</div>
+<!-- Progress Bar -->
+<div class="h-1.5 w-full bg-surface-container-highest relative overflow-hidden">
+<div class="loading-bar-fill h-full bg-primary relative">
+<!-- Glow effect on leading edge -->
+<div class="absolute right-0 top-0 h-full w-4 bg-primary-container blur-sm"></div>
+</div>
+</div>
+<!-- Scrolling Console Data -->
+<div class="bg-surface-container-low p-4 h-24 overflow-hidden relative">
+<div class="font-body text-[10px] text-on-surface-variant leading-relaxed opacity-50 space-y-1">
+<p>&gt; Fetching neural patterns from source...</p>
+<p>&gt; Initializing Concept_Imprint.v2.0.4</p>
+<p>&gt; Syncing with Neon Protocol backbone...</p>
+<p>&gt; Verifying checksum: OK</p>
+<p>&gt; Calibrating digital artifact filters...</p>
+<p>&gt; Allocating 16GB VRAM for identity rendering...</p>
+</div>
+<!-- Vignette on console -->
+<div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-surface-container-low via-transparent to-surface-container-low opacity-80"></div>
+</div>
+</div>
+</div>
+<!-- Bottom Footer (System Signature) -->
+<div class="absolute bottom-12 w-full flex flex-col items-center gap-4">
+<div class="flex items-center gap-8 opacity-40">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-primary"></div>
+<span class="font-label text-[10px] tracking-[0.3em] uppercase">Core_System</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-secondary"></div>
+<span class="font-label text-[10px] tracking-[0.3em] uppercase">Neural_Link</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-tertiary"></div>
+<span class="font-label text-[10px] tracking-[0.3em] uppercase">Cloud_State</span>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline font-bold text-primary tracking-[0.5em] uppercase text-sm">NEON_PROTOCOL</span>
+<span class="font-label text-[8px] text-outline tracking-[0.1em] mt-1 opacity-50">© 2024 DECENTRALIZED_IMPRINT_NET</span>
+</div>
+</div>
+<!-- Ambient Glow Elements -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+</main>
+<!-- Corner Frames (Purely Decorative) -->
+<div class="fixed top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/20 m-4 pointer-events-none"></div>
+<div class="fixed top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/20 m-4 pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-primary/20 m-4 pointer-events-none"></div>
+<div class="fixed bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/20 m-4 pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#fcf9f8",
+                    "on-tertiary-container": "#005406",
+                    "on-primary": "#006767",
+                    "secondary-fixed": "#ffbdf3",
+                    "on-tertiary": "#005e07",
+                    "inverse-on-surface": "#565555",
+                    "primary-container": "#00ffff",
+                    "on-background": "#ffffff",
+                    "secondary-fixed-dim": "#ffa6f3",
+                    "primary": "#c1fffe",
+                    "primary-dim": "#00e6e6",
+                    "error": "#ff716c",
+                    "on-surface": "#ffffff",
+                    "surface-container-lowest": "#000000",
+                    "error-dim": "#d7383b",
+                    "tertiary-container": "#59ee50",
+                    "tertiary": "#69fd5d",
+                    "secondary-container": "#a900a9",
+                    "outline-variant": "#484847",
+                    "on-primary-container": "#005d5d",
+                    "on-secondary-fixed-variant": "#920091",
+                    "surface-tint": "#c1fffe",
+                    "on-error-container": "#ffa8a3",
+                    "surface": "#0e0e0e",
+                    "surface-container-highest": "#262626",
+                    "surface-container-high": "#201f1f",
+                    "on-primary-fixed-variant": "#006262",
+                    "on-tertiary-fixed": "#003e03",
+                    "secondary": "#ff51fa",
+                    "tertiary-fixed": "#59ee50",
+                    "tertiary-fixed-dim": "#49e043",
+                    "inverse-primary": "#006a6a",
+                    "on-primary-fixed": "#004343",
+                    "surface-dim": "#0e0e0e",
+                    "primary-fixed-dim": "#00e6e6",
+                    "surface-container": "#1a1919",
+                    "surface-bright": "#2c2c2c",
+                    "surface-variant": "#262626",
+                    "outline": "#767575",
+                    "on-surface-variant": "#adaaaa",
+                    "surface-container-low": "#131313",
+                    "on-secondary-fixed": "#620061",
+                    "on-secondary-container": "#fff5f9",
+                    "on-tertiary-fixed-variant": "#005f07",
+                    "error-container": "#9f0519",
+                    "tertiary-dim": "#49e043",
+                    "secondary-dim": "#ff51fa",
+                    "primary-fixed": "#00f5f5",
+                    "on-secondary": "#400040",
+                    "background": "#0e0e0e",
+                    "on-error": "#490006"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        .tactical-grid {
+            background-image: linear-gradient(to right, rgba(72, 72, 71, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(72, 72, 71, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="fixed inset-0 tactical-grid pointer-events-none"></div>
+<div class="fixed inset-0 scanline-overlay pointer-events-none opacity-20"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#0e0e0e] flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#c1fffe]" data-icon="terminal">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold text-[#c1fffe] tracking-widest uppercase text-sm">NEON_PROTOCOL</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right hidden md:block">
+<p class="font-label text-[10px] text-outline tracking-[0.1em] uppercase">System Status</p>
+<p class="font-label text-[10px] text-tertiary tracking-[0.1em] uppercase">Optimal</p>
+</div>
+<div class="w-8 h-8 bg-surface-container-high border border-outline-variant/20 flex items-center justify-center transition-transform scale-95 active:scale-90 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a digital avatar with neon highlights and cybernetic facial markings in a dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBrBYcYPNKrabNUKBKyLeYcXP9z3AqQNK5xISxcrwW7E141EQ-ZDOkcZXZUj_vD28cwU7OiEEpmEZ3_h0R7G0nZz2DXQKkkYOTaWzswZJfHzPFappsTs4CfNl8UhUkiIV8OJt_TNLi8EdhsX1qyZ-JfQl3GpQE0I5zUm-p61zq6utYl0C2rJ0Bnv_MxbGfFs-21lDbBhCGpqX4xqs5FUu-axU0ay4m9pCswhgXOKSvKfj-NRes5lgg9941Ck9gVnh0ePSXWOm6A"/>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-24 pb-32 px-6 max-w-7xl mx-auto relative">
+<!-- HUD Elements -->
+<div class="fixed top-24 left-6 pointer-events-none opacity-40 hidden lg:block">
+<div class="border-l border-t border-primary/30 w-16 h-16 mb-2"></div>
+<p class="font-label text-[10px] tracking-widest text-primary uppercase">Imprint_Mode: Active</p>
+<p class="font-label text-[10px] tracking-widest text-outline uppercase">Buffer: 98.4%</p>
+</div>
+<div class="fixed bottom-24 right-6 pointer-events-none opacity-40 hidden lg:block text-right">
+<p class="font-label text-[10px] tracking-widest text-secondary uppercase">Secure_Link: Established</p>
+<p class="font-label text-[10px] tracking-widest text-outline uppercase">Latency: 14ms</p>
+<div class="border-r border-bottom border-secondary/30 w-16 h-16 mt-2 ml-auto"></div>
+</div>
+<!-- Quick Capture Core -->
+<section class="flex flex-col items-center justify-center py-12 md:py-20 text-center">
+<div class="mb-12 relative">
+<div class="absolute inset-0 bg-primary/20 blur-[60px] rounded-full scale-150"></div>
+<button class="relative w-32 h-32 md:w-40 md:h-40 bg-surface border-2 border-primary flex items-center justify-center group transition-all duration-300 active:scale-95">
+<span class="absolute inset-0 border border-primary animate-pulse opacity-50"></span>
+<span class="material-symbols-outlined text-primary text-5xl group-hover:scale-110 transition-transform" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-label text-xs tracking-[0.2em] text-primary uppercase whitespace-nowrap">Imprint Idea</span>
+</button>
+</div>
+<div class="w-full max-w-2xl mt-8">
+<div class="relative group">
+<input class="w-full bg-transparent border-none border-b border-outline-variant/30 py-4 px-2 font-body text-xl md:text-2xl tracking-tight placeholder:text-outline-variant focus:ring-0 focus:border-secondary transition-all outline-none" placeholder="TRANSCRIBE THOUGHT DATA..." type="text"/>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary group-focus-within:w-full transition-all duration-500 shadow-[0_0_8px_rgba(255,81,250,0.5)]"></div>
+<div class="absolute right-2 bottom-4 flex gap-2">
+<span class="font-label text-[10px] text-outline uppercase">Press Enter to Commit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Glassmorphic Recent Snippets -->
+<section class="mt-16">
+<div class="flex items-baseline justify-between mb-8 border-b border-outline-variant/10 pb-2">
+<h2 class="font-headline text-lg tracking-widest uppercase text-on-surface">Recent_Synchronizations</h2>
+<span class="font-label text-[10px] text-outline uppercase">Count: 048</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Snippet Card 1 -->
+<div class="bg-surface-variant/60 backdrop-blur-xl border-l-2 border-primary p-6 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] text-primary tracking-widest uppercase">ID: 882-Alpha</span>
+<span class="font-label text-[10px] text-outline uppercase">2m ago</span>
+</div>
+<p class="font-body text-on-surface-variant group-hover:text-on-surface transition-colors leading-relaxed">
+                        Neural interface calibration protocols require dynamic frequency hopping to avoid synaptic interference.
+                    </p>
+<div class="mt-6 flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary/10 text-tertiary font-label text-[9px] tracking-widest uppercase">Protocol</span>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary font-label text-[9px] tracking-widest uppercase">Research</span>
+</div>
+</div>
+<!-- Snippet Card 2 -->
+<div class="bg-surface-variant/60 backdrop-blur-xl border-l-2 border-secondary p-6 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] text-secondary tracking-widest uppercase">ID: 412-Gamma</span>
+<span class="font-label text-[10px] text-outline uppercase">14m ago</span>
+</div>
+<p class="font-body text-on-surface-variant group-hover:text-on-surface transition-colors leading-relaxed">
+                        Concept: Decentralized memory anchors for collective subconscious mapping. Architecture needs validation.
+                    </p>
+<div class="mt-6 flex gap-2">
+<span class="px-2 py-0.5 bg-primary/10 text-primary font-label text-[9px] tracking-widest uppercase">Concept</span>
+</div>
+</div>
+<!-- Snippet Card 3 -->
+<div class="bg-surface-variant/60 backdrop-blur-xl border-l-2 border-tertiary p-6 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] text-tertiary tracking-widest uppercase">ID: 109-Sigma</span>
+<span class="font-label text-[10px] text-outline uppercase">1h ago</span>
+</div>
+<p class="font-body text-on-surface-variant group-hover:text-on-surface transition-colors leading-relaxed">
+                        Vectorized thought streams are showing 12% higher retention when tagged with sensory metadata.
+                    </p>
+<div class="mt-6 flex gap-2">
+<span class="px-2 py-0.5 bg-outline-variant/10 text-outline font-label text-[9px] tracking-widest uppercase">Analytics</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0e0e0e]/60 backdrop-blur-xl">
+<button class="flex flex-col items-center justify-center text-[#c1fffe] shadow-[0_0_15px_rgba(0,255,255,0.3)] bg-[#201f1f] p-3 transition-all duration-300 scale-110">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa] transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa] transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#484847] p-3 hover:text-[#ff51fa] transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</nav>
+</body></html>
